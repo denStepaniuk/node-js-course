@@ -1,0 +1,10 @@
+###Related to "Task #4"
+GET http://localhost:4000/dad-jokes
+
+###Related to "Task #5"
+GET https://icanhazdadjoke.com/
+Accept: application/json
+
+###Related to "Task #5"
+GET https://icanhazdadjoke.com/j/R7UfaahVfFd
+Accept: application/json
