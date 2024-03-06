@@ -4,6 +4,11 @@ const axios = require("axios");
 const {customError} = require('./errorrs')
 const app = express();
 
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+
 app.get('/dad-jokes', async (req, resp) => {
   try {
     const jokeResponse = await axios.get('https://icanhazdadjoke.com/', {
@@ -18,7 +23,7 @@ app.get('/dad-jokes', async (req, resp) => {
     }
 
   } catch (err) {
-    console.error(Error(err))
+    console.error(err);
     resp.status(err.response.status).send(
         customError(err.response.status, err.code, "Downstream server error!"));
   }
