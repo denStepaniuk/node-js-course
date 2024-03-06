@@ -1,5 +1,5 @@
 const express = require('express', 4.18);
-const {APP_LOCAL_PORT} = require("./environments");
+const {APP_LOCAL_PORT, NASA_API_KEY} = require("./environments");
 const axios = require("axios");
 const {customError} = require('./errorrs')
 const app = express();
@@ -11,7 +11,7 @@ process.on('unhandledRejection', (reason, promise) => {
 
 app.get('/dad-jokes', async (req, resp) => {
   try {
-    const jokeResponse = await axios.get('https://icanhazdadjoke.com/', {
+    const jokeResponse = await axios.get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${NASA_API_KEY}`, {
       headers: {
         "Accept": "application/json"
       }
