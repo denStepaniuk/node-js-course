@@ -1,21 +1,25 @@
-### Node.js course:
+## Node.js course:
+> Initial: create and add your own 'NASA' **api_key** into 'project_dir' .env file
+```shell
+npm install
+```
 
-<details>
-<summary>Task 1: Hello world!</summary>
-
-- Print "Hello World!" to the console
-- Acceptance criteria:
-- Create index.js file and print `"hello world"` to console:
-</details>
+Entry point:
+```shell
+node ./app
+```
+ - PROXY 1: Hello world!
 
 ```shell
 node ./node-js-basics/index
 ```
-- Task 2: Connect Express framework [express.js line #235](package-lock.json)
-- Task 3: Add environment variables [environments.js](node-js-basics/environments.js)
-- Task 4: Create a [first endpoint](app-requests.http):
+- PROXY-2: Connect Express framework [express.js line #235](package-lock.json);
+- PROXY-3: Add environment variables [environments.js](proxy-app/env-constants/environments.js);
+- PROXY-4: Create a [first endpoint](app-requests.http):
 
 ```http request
-GET http://localhost:4000/dad-jokes
+GET http://localhost:4000/meteors
 ```
-- Task 5: use a [local API platform to perform requests](app-requests.http) (e.g: Postman)
+- PROXY-5: use a [local API platform to perform requests](app-requests.http) (e.g: Postman);
+- PROXY-6: Installed;
+- PROXY-7: Added logic to modify response. 
