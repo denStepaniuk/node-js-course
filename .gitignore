@@ -1,4 +1,4 @@
 .idea
 node-js-course.iml
-
+.env
 node_modules

@@ -1,5 +1,8 @@
 ## Node.js course:
-> Initial: add your own 'NASA' **api_key** into [config.yaml](config.yaml)
+> Initial: create and add your own 'NASA' **api_key** into 'project_dir' .env file
+```shell
+npm install
+```
 
 Entry point:
 ```shell

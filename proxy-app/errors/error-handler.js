@@ -1,13 +1,12 @@
 const {customError} = require("./errors");
 
-const processAndSendError = (err, resp) => {
+const processError = (err, resp) => {
   console.error(err);
 
   if (err.response) {
     resp
     .status(err.response.status)
-    .send(customError(err.response.status, err.code,
-        "Downstream server error!"));
+    .send(customError(err.response.status, err.code, "Downstream server error!"));
   } else {
     resp
     .status(500)
@@ -16,5 +15,5 @@ const processAndSendError = (err, resp) => {
 }
 
 module.exports = {
-  processAndSendError
+  processError
 }

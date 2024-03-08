@@ -2,11 +2,13 @@ const axios = require("axios");
 const express = require('express', 4.18);
 const {NASA_URL, METEORS_PATH} = require("./router-utills");
 const {getPreviousWeekDates} = require("../utils/date-utils");
-const {NASA_API_KEY, APP_LOCAL_PORT} = require("../env-constants/environments");
 const {proceedAndTransform} = require("../utils/response-transform-utils");
-const {processAndSendError} = require("../errors/error-handler");
+const {processError} = require("../errors/error-handler");
+require('dotenv').config();
 
 const app = express();
+const localPort = process.env.local_port
+const nasa_api_key = process.env.api_key
 
 const getMeteors = () => {
   app.get('/meteors', async (req, resp) => {
@@ -16,24 +18,23 @@ const getMeteors = () => {
         params: {
           start_date: getPreviousWeekDates().monday,
           end_date: getPreviousWeekDates().friday,
-          api_key: NASA_API_KEY
+          api_key: nasa_api_key
         }
       });
 
       const responseBody = proceedAndTransform(response);
 
       if (response.status === 200) {
-        console.log(
-            `Success ${METEORS_PATH} : ${response.config.method} ${JSON.stringify(response.status)} OK`);
+        console.log(`Success ${METEORS_PATH} : ${response.config.method} ${JSON.stringify(response.status)} OK`);
         resp.send(responseBody);
       }
     } catch (err) {
-      processAndSendError(err, resp)
+      processError(err, resp)
     }
   });
 
-  app.listen(APP_LOCAL_PORT, () => {
-    console.log(`App started on port ${APP_LOCAL_PORT}`)
+  app.listen(localPort, () => {
+    console.log(`App started on port ${localPort}`)
   })
 }
 
