@@ -1,7 +1,7 @@
 {
   "name": "node-js-course",
   "version": "1.0.0",
-  "description": "<details> <summary>Task 1: Hello world!</summary>",
+  "description": "Simple Node.js training project.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

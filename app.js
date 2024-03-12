@@ -1,3 +1,11 @@
-const {getMeteors} = require('./proxy-app/router/router')
+const {Server} = require('./delivery/server')
+require('dotenv').config();
 
-getMeteors();
+const localPort = process.env.local_port
+
+const bootstrap = () => {
+  const app = new Server(localPort);
+  app.start();
+}
+
+bootstrap()

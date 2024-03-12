@@ -1,11 +1,13 @@
 const getPreviousWeekDates = () => {
+  const MONDAY_OFFSET = 6;
+  const FRIDAY_OFFSET = 2;
+
   const currentDate = new Date();
+  const mondayOfPreviousWeek = new Date();
+  const fridayOfPreviousWeek = new Date();
 
-  const mondayOfPreviousWeek = new Date(currentDate);
-  mondayOfPreviousWeek.setDate(currentDate.getDate() - currentDate.getDay() - 6);
-
-  const fridayOfPreviousWeek = new Date(currentDate);
-  fridayOfPreviousWeek.setDate(currentDate.getDate() - currentDate.getDay() - 2);
+  mondayOfPreviousWeek.setDate(currentDate.getDate() - currentDate.getDay() - MONDAY_OFFSET);
+  fridayOfPreviousWeek.setDate(currentDate.getDate() - currentDate.getDay() - FRIDAY_OFFSET);
 
   const formattedMonday = formatDate(mondayOfPreviousWeek);
   const formattedFriday = formatDate(fridayOfPreviousWeek);
