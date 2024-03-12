@@ -1,0 +1,62 @@
+require('dotenv').config();
+const axios = require("axios");
+const {NASA_URL, METEORS_PATH} = require("../delivery/router/router-utills");
+const {getPreviousWeekDates} = require("../app-utils/date-utils");
+const {
+  transformMeteorResponse,
+  countVisibleMeteors,
+  retrievePotentiallyDangerousMeteors
+} = require("./response-transform-utils");
+
+const nasa_api_key = process.env.api_key;
+
+const retrieveMeteorDataLastWeek = async (res) => {
+  return await axios.get(`${NASA_URL}${METEORS_PATH}`, {
+    params: {
+      start_date: getPreviousWeekDates().monday,
+      end_date: getPreviousWeekDates().friday,
+      api_key: nasa_api_key
+    }
+  })
+  .then((response) => {
+    console.info(`Success ${METEORS_PATH} : ${response.config.method} ${JSON.stringify(response.status)} OK`);
+    const responseBody = transformMeteorResponse(response);
+    res.send(responseBody);
+  });
+};
+
+const retrieveMeteorDataWithQueryParams = async (serverResp, queryParams) => {
+  const responseBody = {};
+
+  return await axios.get(`${NASA_URL}${METEORS_PATH}`, {
+    params: {
+      api_key: nasa_api_key,
+      start_date: queryParams.start_date,
+      end_date: queryParams.end_date
+    }
+  })
+  .then((response) => {
+    if (queryParams.count === 'true') {
+      responseBody.visible = countVisibleMeteors(response);
+    }
+
+    if (queryParams.start_date && queryParams.end_date && !queryParams.were_dangerous_meteors) {
+      responseBody.date_based = transformMeteorResponse(response);
+    }
+
+    if (queryParams.start_date && queryParams.end_date && queryParams.were_dangerous_meteors === 'true') {
+      responseBody.hazardous = retrievePotentiallyDangerousMeteors(response);
+    }
+
+    if (queryParams.were_dangerous_meteors === 'true' && !(queryParams.start_date && queryParams.end_date)) {
+      responseBody.hazardous = retrievePotentiallyDangerousMeteors(response);
+    }
+
+    serverResp.send(responseBody);
+  });
+}
+
+module.exports = {
+  retrieveMeteorDataLastWeek,
+  retrieveMeteorDataWithQueryParams
+}

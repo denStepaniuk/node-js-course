@@ -1,14 +1,14 @@
 const {customError} = require("./errors");
 
-const processError = (err, resp) => {
+const processError = (err, res) => {
   console.error(err);
 
   if (err.response) {
-    resp
+    res
     .status(err.response.status)
     .send(customError(err.response.status, err.code, "Downstream server error!"));
   } else {
-    resp
+    res
     .status(500)
     .send(customError(500, "Internal Server Error", err.message))
   }

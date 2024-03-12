@@ -1,4 +1,5 @@
 .idea
-node-js-course.iml
 .env
+node-js-course.iml
 node_modules
+package-lock.json
