@@ -89,3 +89,4 @@ GET http://localhost:4000/dad-jokes
   }
   ```
 - PROXY-10: TBD;
+- PROXY-11: Add POST endpoint to obtain a photo;

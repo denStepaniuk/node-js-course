@@ -23,5 +23,6 @@ const formatDate = (date) => {
 }
 
 module.exports = {
-  getPreviousWeekDates
+  getPreviousWeekDates,
+  formatDate
 }
