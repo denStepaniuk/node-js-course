@@ -1,11 +1,12 @@
 require('dotenv').config();
 const axios = require("axios");
-const {NASA_URL, METEORS_PATH} = require("../delivery/router/router-utills");
+const {NASA_URL, METEORS_PATH, ROVER_PATH} = require("../delivery/router/router-utills");
 const {getPreviousWeekDates} = require("../app-utils/date-utils");
 const {
   transformMeteorResponse,
   countVisibleMeteors,
-  retrievePotentiallyDangerousMeteors
+  retrievePotentiallyDangerousMeteors,
+  retrieveLinkOfPictureOfTheDay
 } = require("./response-transform-utils");
 
 const nasa_api_key = process.env.api_key;
@@ -56,7 +57,21 @@ const retrieveMeteorDataWithQueryParams = async (serverResp, queryParams) => {
   });
 }
 
+const getLinkToRoverPicture = async (request) => {
+  return await axios.get(`${NASA_URL}${ROVER_PATH}`, {
+    params: {
+      api_key: request.body.user_api_key,
+      sol: request.body.sol,
+      page: request.body.page
+    }
+  })
+  .then((response) => {
+    return retrieveLinkOfPictureOfTheDay(response.data);
+  })
+};
+
 module.exports = {
   retrieveMeteorDataLastWeek,
-  retrieveMeteorDataWithQueryParams
+  retrieveMeteorDataWithQueryParams,
+  getLinkToRoverPicture
 }

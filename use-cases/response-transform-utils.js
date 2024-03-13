@@ -54,6 +54,10 @@ const retrievePotentiallyDangerousMeteors = (response) => {
   return responseBody;
 };
 
+const retrieveLinkOfPictureOfTheDay = (responseData) => {
+  return responseData.photos[0].img_src;
+}
+
 const countVisibleMeteors = (response) => {
   return { meteors: response.data.element_count};
 };
@@ -61,5 +65,6 @@ const countVisibleMeteors = (response) => {
 module.exports = {
   transformMeteorResponse,
   countVisibleMeteors,
-  retrievePotentiallyDangerousMeteors
+  retrievePotentiallyDangerousMeteors,
+  retrieveLinkOfPictureOfTheDay
 }
