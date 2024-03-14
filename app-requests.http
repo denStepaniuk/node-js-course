@@ -29,10 +29,11 @@ Content-Type: application/json
 ###POST obtain photo
 POST http://localhost:4000/yep-its-post-but-get-me-photo
 Content-Type: application/json
+Accept-Encoding: gzip, deflate, br
 
 {
-"id": 1234,
-"name": "Especto Patronum!",
+"id": "{{$random.uuid}}",
+"name": "Especto Patronum",
 "user_api_key": "",
 "sol": 1000,
 "page": 1

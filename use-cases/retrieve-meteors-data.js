@@ -1,13 +1,13 @@
 require('dotenv').config();
-const axios = require("axios");
-const {NASA_URL, METEORS_PATH, ROVER_PATH} = require("../delivery/router/router-utills");
-const {getPreviousWeekDates} = require("../app-utils/date-utils");
+const axios = require('axios');
+const {NASA_URL, METEORS_PATH, ROVER_PATH} = require('../delivery/router/router-utills');
+const {getPreviousWeekDates} = require('../app-utils/date-utils');
 const {
   transformMeteorResponse,
   countVisibleMeteors,
   retrievePotentiallyDangerousMeteors,
   retrieveLinkOfPictureOfTheDay
-} = require("./response-transform-utils");
+} = require('./response-transform-utils');
 
 const nasa_api_key = process.env.api_key;
 
@@ -20,9 +20,8 @@ const retrieveMeteorDataLastWeek = async (res) => {
     }
   })
   .then((response) => {
-    console.info(`Success ${METEORS_PATH} : ${response.config.method} ${JSON.stringify(response.status)} OK`);
-    const responseBody = transformMeteorResponse(response);
-    res.send(responseBody);
+    console.info(`Downstream response: ${METEORS_PATH} : ${response.config.method.toUpperCase()} ${JSON.stringify(response.status)} OK`);
+    return transformMeteorResponse(response);
   });
 };
 
@@ -37,6 +36,7 @@ const retrieveMeteorDataWithQueryParams = async (serverResp, queryParams) => {
     }
   })
   .then((response) => {
+    console.info(`Downstream response: ${METEORS_PATH} : ${response.config.method.toUpperCase()} ${JSON.stringify(response.status)}`)
     if (queryParams.count === 'true') {
       responseBody.visible = countVisibleMeteors(response);
     }
@@ -53,7 +53,7 @@ const retrieveMeteorDataWithQueryParams = async (serverResp, queryParams) => {
       responseBody.hazardous = retrievePotentiallyDangerousMeteors(response);
     }
 
-    serverResp.send(responseBody);
+    return responseBody;
   });
 }
 
@@ -66,6 +66,7 @@ const getLinkToRoverPicture = async (request) => {
     }
   })
   .then((response) => {
+    console.info(`Downstream response: ${ROVER_PATH} : ${response.config.method.toUpperCase()} ${JSON.stringify(response.status)}`)
     return retrieveLinkOfPictureOfTheDay(response.data);
   })
 };

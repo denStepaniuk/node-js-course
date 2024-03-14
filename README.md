@@ -60,12 +60,17 @@ GET http://localhost:4000/dad-jokes
   }
   // ?were_dangerous_meteors=true
   {
-    "amount": 1,
     "hazardous": {
+      "amount": 2,
       "meteors": [
         {
-          "id": "54429268",
-          "name": "(2024 DV1)",
+          "id": "3712670",
+          "name": "(2015 DN215)",
+          "is_potentially_hazard": true
+        },
+        {
+          "id": "2026663",
+          "name": "26663 (2000 XK47)",
           "is_potentially_hazard": true
         }
       ]
@@ -90,3 +95,4 @@ GET http://localhost:4000/dad-jokes
   ```
 - PROXY-10: TBD;
 - PROXY-11: Add POST endpoint to obtain a photo;
+- PROXY-12: Add validation to requests and responses;
