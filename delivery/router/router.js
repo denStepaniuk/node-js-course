@@ -1,37 +1,17 @@
+const {roverPictureRequestBodyValidator} = require('../../app-utils/validators/validators')
 const express = require('express');
-const {processError} = require("./errors/error-handler");
-const {
-  retrieveMeteorDataLastWeek, 
-  retrieveMeteorDataWithQueryParams,
-  getLinkToRoverPicture
-} = require("../../use-cases/retrieve-meteors-data");
+const {processError} = require('./errors/error-handler');
+const {getMeteorsData} = require('../controllers/get-controller');
+const {postRequestToNasaRover} = require('../controllers/post-controller');
 require('dotenv').config();
 
 const router = express.Router();
 router.use(express.json());
 
-router.get('/meteors', (req, res, next) => {
-  if (Object.keys(req.query).length !== 0) {
-    retrieveMeteorDataWithQueryParams(res, req.query)
-    .catch((err) => {
-      next(err);
-   });
-  } else {
-    retrieveMeteorDataLastWeek(res)
-    .catch((err) => {
-     next(err);
-   });
-  }
-});
+router.get('/meteors', getMeteorsData);
 
-router.post(`/yep-its-post-but-get-me-photo`, (req, res, next) => {
-  getLinkToRoverPicture(req)
-  .then((link) => {
-    res.redirect(link);
-  })
-  .catch((err) => {
-   next(err)
-  })
+router.post(`/yep-its-post-but-get-me-photo`, roverPictureRequestBodyValidator, (req, res, next ) => {
+  postRequestToNasaRover(req, res, next);
 });
 
 router.use((err, req, res, next) => {

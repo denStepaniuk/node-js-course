@@ -4,6 +4,7 @@
   "description": "Simple Node.js training project.",
   "main": "app.js",
   "scripts": {
+    "dev": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "d.stsepaniuk",
@@ -12,6 +13,7 @@
     "axios": "^1.6.7",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
+    "joi": "^17.12.2",
     "js-yaml": "^4.1.0",
     "json": "^11.0.0",
     "uuid": "^9.0.1"
