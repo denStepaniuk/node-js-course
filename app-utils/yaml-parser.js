@@ -1,11 +1,11 @@
-const fs = require('fs');
-const yaml = require('js-yaml');
-const path = require('path')
+const fs = require("fs");
+const yaml = require("js-yaml");
+const path = require("path")
 
 const retrieveApiKey = () => {
-  const pathToFile = path.resolve(__dirname, '../../config.yaml');
+  const pathToFile = path.resolve(__dirname, "../../config.yaml");
 
-  const yamlData = fs.readFileSync(pathToFile, 'utf8');
+  const yamlData = fs.readFileSync(pathToFile, "utf8");
 
   try {
     const constants = yaml.load(yamlData);

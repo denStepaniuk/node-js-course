@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require("joi");
 
 const closeApproachDataSchema = Joi.object({
   close_approach_date: Joi.string().isoDate().required(),
@@ -32,8 +32,8 @@ const observableMeteorsSchema = Joi.object().pattern(
     )
 );
 
-
 const hazardousMeteorsResponseValidSchema = Joi.object({
+  date_based: observableMeteorsSchema.optional(),
   visible: Joi.object({
     meteors: Joi.number().integer().positive().required()
   }).optional(),

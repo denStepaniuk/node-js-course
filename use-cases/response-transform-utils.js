@@ -1,4 +1,4 @@
-const {estimatedDiameterInMeters} = require('../app-utils/iso-utils');
+const {estimatedDiameterInMeters} = require("../app-utils/iso-utils");
 
 const transformMeteorResponse = (response) => {
 
