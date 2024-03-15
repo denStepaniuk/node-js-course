@@ -1,10 +1,9 @@
-const {Server} = require('./delivery/server')
-require('dotenv').config();
-
-const localPort = process.env.local_port
+require("dotenv").config();
+const {local_port} = require("./app-utils/config/config")
+const {Server} = require("./delivery/server")
 
 const bootstrap = () => {
-  const app = new Server(localPort);
+  const app = new Server(local_port);
   app.start();
 }
 

@@ -1,9 +1,9 @@
 const {retrieveMeteorDataWithQueryParams, retrieveMeteorDataLastWeek} = require(
-    '../../use-cases/retrieve-meteors-data');
+    "../../use-cases/retrieve-meteors-data");
 const {
   meteorResponseBodyValidator,
   observableMeteorsResponseValidator
-} = require('../../app-utils/validators/validators');
+} = require("../../app-utils/validators/validators");
 
 const getMeteorsData = (req, res, next) => {
   if (Object.keys(req.query).length !== 0) {

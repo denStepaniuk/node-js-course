@@ -1,5 +1,5 @@
-const express = require('express');
-const {router} = require('./router/router');
+const express = require("express");
+const {router} = require("./router/router");
 
 class Server {
   constructor(localPort) {

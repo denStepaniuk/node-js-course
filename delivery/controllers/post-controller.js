@@ -1,4 +1,4 @@
-const {getLinkToRoverPicture} = require('../../use-cases/retrieve-meteors-data');
+const {getLinkToRoverPicture} = require("../../use-cases/retrieve-meteors-data");
 
 const postRequestToNasaRover = (req, res, next) => {
   getLinkToRoverPicture(req)
