@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  {% block hazardousStyle %}{% endblock%}
+  <link rel="stylesheet" href="/statics/styles.css" type="text/css"/>
+  <title>NASA | Start page</title>
+</head>
+<header>
+  {% block navbarStartPage %}{% endblock %}
+</header>
+<body>
+<section class="main-section">
+  {% block error %}{% endblock  %}
+  <main class="main__content">
+    {% block dangerousMeteors %}{% endblock %}
+    {% block buttons %}{% endblock %}
+    {% block pictures %}{% endblock %}
+  </main>
+</section>
+{% include "./footer/footer.html" %}
+</body>
+</html>

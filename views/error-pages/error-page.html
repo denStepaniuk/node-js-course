@@ -1,0 +1,10 @@
+{% extends "../index.html" %}
+
+{% block error %}
+    <p class="error-status-text">
+        {{ statusText }}
+    </p>
+    <p class="error-status">
+        {{ errorStatus }}
+    </p>
+{% endblock error %}

@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block hazardousStyle %}
+<head>
+  <title>Hazard meteors</title>
+  <link rel="stylesheet" href="/statics/meteors-style.css" type="text/css">
+</head>
+{% endblock %}
+
+{% block dangerousMeteors %}
+  <section class="dangerous-meteors">
+    <p class="hazardous-amount">Meteors amount: {{ hazardousAmount }}</p>
+    <div class="hazardous-meteors">
+      {% for meteor in meteors %}
+      <div>
+        <div>Meteor ID: {{ meteor.id }} </div>
+        <div>Meteor Name: {{ meteor.name }} </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

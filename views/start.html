@@ -1,0 +1,16 @@
+{% extends "index.html"%}
+
+{% block navbarStartPage %}
+{% include "./navbar/nav-bar-start-page.html" %}
+{% endblock %}
+
+{% block buttons %}
+<div class="buttons">
+  <button class="meteors-data-button">
+    <a href="/get-meteors-data">DANGEROUS METEORS</a>
+  </button>
+  <button class="pictures-button">
+    <a href="/get-pictures">CHECK PICTURES</a>
+  </button>
+</div>
+{% endblock %}

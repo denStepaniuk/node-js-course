@@ -1,4 +1,3 @@
-require("dotenv").config();
 const {local_port} = require("./app-utils/config/config")
 const {Server} = require("./delivery/server")
 
