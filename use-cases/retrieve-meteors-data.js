@@ -7,7 +7,8 @@ const {
   transformMeteorResponse,
   countVisibleMeteors,
   retrievePotentiallyDangerousMeteors,
-  retrieveLinkOfPictureOfTheDay
+  retrieveLinkOfPictureOfTheDay,
+  getLinksOnPhotos
 } = require("./response-transform-utils");
 
 const retrieveMeteorDataLastWeek = async (res) => {
@@ -70,7 +71,20 @@ const getLinkToRoverPicture = async (request) => {
   })
 };
 
+const getLinksToRoverPictures = async () => {
+  return await axios.get(`${NASA_URL}${ROVER_PATH}`, {
+    params: {
+      api_key: nasa_api_key,
+      sol: 1000,
+      page: 1
+    }
+  }).then((response) => {
+    return getLinksOnPhotos(response.data);
+  })
+}
+
 module.exports = {
+  getLinksToRoverPictures,
   retrieveMeteorDataLastWeek,
   retrieveMeteorDataWithQueryParams,
   getLinkToRoverPicture

@@ -58,11 +58,24 @@ const retrieveLinkOfPictureOfTheDay = (responseData) => {
   return responseData.photos[0].img_src;
 }
 
+const getLinksOnPhotos = (responseData) => {
+  let counter = 0;
+  let toReturn = [];
+
+  for (let i = counter; i < 6; i++){
+    toReturn[i] = responseData.photos[i].img_src
+    counter ++
+  };
+
+  return toReturn;
+};
+
 const countVisibleMeteors = (response) => {
   return { meteors: response.data.element_count};
 };
 
 module.exports = {
+  getLinksOnPhotos,
   transformMeteorResponse,
   countVisibleMeteors,
   retrievePotentiallyDangerousMeteors,

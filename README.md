@@ -93,6 +93,6 @@ GET http://localhost:4000/dad-jokes
     }
   }
   ```
-- PROXY-10: TBD;
+- PROXY-10: Add 'nunjucks' templates;
 - PROXY-11: Add POST endpoint to obtain a photo;
 - PROXY-12: Add validation to requests and responses;

@@ -1,0 +1,24 @@
+.dangerous-meteors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dangerous-meteors .hazardous-meteors{
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  flex-direction: column;
+}
+
+.hazardous-meteors div {
+  box-shadow: 0 0 10px #d0842d;
+  margin: 5px;
+  padding: 3px;
+}
+
+.hazardous-amount {
+  font-size: 25px;
+  color: white;
+}

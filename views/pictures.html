@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block navbarStartPage %}
+{% include "./navbar/nav-bar-home.html" %}
+{% endblock %}
+
+{% block pictures %}
+<div class="img__gallery">
+  {% for link in linksArray %}
+  <div class="img_item">
+    <img src="{{ link }}" alt="Img link">
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,147 @@
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: gray;
+  margin: 0;
+  padding: 0;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100vw;
+}
+
+.pictures-button{
+  width: auto;
+  height: 20px;
+  margin: 25px;
+  padding: 5px;
+}
+
+.pictures-button a {
+  color: black
+}
+
+.pictures-button:hover {
+  background-color: rgb(36, 183, 55);
+  color: white;
+}
+
+.pictures-button:hover a{
+  color: white;
+}
+
+.meteors-data-button {
+  width: auto;
+  height: 20px;
+  padding: 5px;
+  margin: 25px;
+}
+
+.meteors-data-button a{
+  color: black;
+}
+
+.meteors-data-button:hover a{
+  color:white;
+}
+
+.meteors-data-button:hover {
+  background-color: rgb(68, 147, 221);
+  color: white;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 1;
+  padding-top: 48px;
+}
+
+a {
+  color: #f0f1eb;
+  text-decoration: none;
+}
+
+header {
+  background: #93c472;
+  width: 100%;
+  position: fixed;
+  box-shadow: 0 0 5px #e7e1dd;
+  border-radius: 0 0 15px 15px;
+  text-align: center;
+  padding: 1vh;
+  margin-bottom: 15px;
+}
+
+.home__image {
+  max-width: 3%;
+  height: auto;
+}
+
+.img__gallery {
+  margin-top: 1vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.img_item {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.img_item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.error-status-text, .error-status {
+  color: white;
+  font-size: 150px;
+}
+
+footer {
+  position: fixed;
+  margin-top: 15px;
+  background: #5ca8f5;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 10px #cecee7;
+  border-radius: 15px 15px 0 0;
+}
+
+.footer_list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 1vh;
+}
