@@ -1,29 +1,31 @@
 ### GET generic request without params:
-GET http://localhost:4000/meteors
+GET http://localhost:4000/get-meteors-data
 Content-Type: application/json
 
 ###GET with all set of parameters:
-GET http://localhost:4000/meteors?count=true&start_date=2024-03-04&end_date=2024-03-08&were_dangerous_meteors=true
+GET http://localhost:4000/get-meteors-data?count=true&start_date=2024-03-04&end_date=2024-03-08&
+    were_dangerous_meteors=true
 Content-Type: application/json
 
 ###GET with dangerous parameter only:
-GET http://localhost:4000/meteors?were_dangerous_meteors=true
+GET http://localhost:4000/get-meteors-data?were_dangerous_meteors=true
 Content-Type: application/json
 
 ###GET with range of dates and dangerous paramters
-GET http://localhost:4000/meteors?were_dangerous_meteors=true&start_date=2024-03-04&end_date=2024-03-08
+GET http://localhost:4000/get-meteors-data?were_dangerous_meteors=true&start_date=2024-03-04&
+    end_date=2024-03-08
 Content-Type: application/json
 
 ###GET with range of dates parametr only:
-GET http://localhost:4000/meteors?start_date=2024-03-04&end_date=2024-03-08
+GET http://localhost:4000/get-meteors-data?start_date=2024-03-04&end_date=2024-03-08
 Content-Type: application/json
 
 ###GET with 'count' parametr only:
-GET http://localhost:4000/meteors?count=true
+GET http://localhost:4000/get-meteors-data?count=true
 Content-Type: application/json
 
 ###GET with date and 'count' parametr:
-GET http://localhost:4000/meteors?start_date=2024-03-04&end_date=2024-03-08&count=true
+GET http://localhost:4000/get-meteors-data?start_date=2024-03-04&end_date=2024-03-08&count=true
 Content-Type: application/json
 
 ###POST obtain photo
