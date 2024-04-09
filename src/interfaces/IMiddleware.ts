@@ -11,5 +11,5 @@ export class IMiddleware {
       req: Request,
       res: Response,
       next: NextFunction
-  ) => void)
+  ) => void);
 }

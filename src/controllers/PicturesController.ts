@@ -3,7 +3,7 @@ import {NextFunction, Request, Response} from 'express';
 import {ResponseRenderService} from '../services/ResponseRenderService';
 
 export class PicturesController extends MainController{
-private readonly renderService: ResponseRenderService;
+  private readonly renderService: ResponseRenderService;
 
   constructor() {
     super();
@@ -14,15 +14,15 @@ private readonly renderService: ResponseRenderService;
         method: 'get',
         func: this.renderRoverPictures
       }
-    ])
+    ]);
   }
 
   renderRoverPictures (req: Request, res: Response, next: NextFunction) {
-   try {
-     this.renderService.renderPicturePage(req, res, next);
-   } catch (error) {
+    try {
+      this.renderService.renderPicturePage(req, res, next);
+    } catch (error) {
       next(error);
-   }
+    }
   }
 
 }

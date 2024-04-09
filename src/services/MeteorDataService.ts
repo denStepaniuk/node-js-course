@@ -36,7 +36,6 @@ export class MeteorDataService {
         }
 
         res.status(200).send(responseBody);
-
       }).catch((error) => {
         next(error);
       })

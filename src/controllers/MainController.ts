@@ -10,9 +10,9 @@ export class MainController {
 
   bindRoutes(routes: Array<IController>): void {
     routes.forEach(({path, method, func, middlewares}) => {
-      let middleware = middlewares?.forEach(mwr => mwr.cast.bind(mwr))
-      let handler = func.bind(this);
-      let pipeline = middleware ? [...middleware, handler] : handler;
+      const middleware = middlewares?.forEach(mwr => mwr.cast.bind(mwr));
+      const handler = func.bind(this);
+      const pipeline = middleware ? [...middleware, handler] : handler;
       this._mainRouter[method](path, pipeline);
     });
   }

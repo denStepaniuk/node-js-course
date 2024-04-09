@@ -43,7 +43,7 @@ export class MeteorsController extends MainController {
     try {
       this.renderService.renderHazardousPage(req, res, next);
     } catch (err) {
-      next(err)
+      next(err);
     }
   }
 
@@ -51,7 +51,7 @@ export class MeteorsController extends MainController {
     try {
       this.dataService.getMeteorsJsonData(req, res, next)
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 }
