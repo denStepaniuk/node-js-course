@@ -2,10 +2,10 @@
   "name": "node-js-course",
   "version": "1.0.0",
   "description": "Simple Node.js training project.",
-  "main": "app.js",
   "scripts": {
-    "dev": "node app",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "dev": "npm run build && node .build/main.js",
+    "test": "npm run build && jest"
   },
   "author": "d.stsepaniuk",
   "license": "ISC",
@@ -18,7 +18,17 @@
     "joi": "^17.12.2",
     "js-yaml": "^4.1.0",
     "json": "^11.0.0",
-    "nunjucks": "^3.2.4",
-    "uuid": "^9.0.1"
+    "nunjucks": "^3.2.4"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.27",
+    "@types/nunjucks": "^3.2.6",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
   }
 }
