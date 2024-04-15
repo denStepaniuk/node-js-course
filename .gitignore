@@ -1,6 +1,9 @@
+.zed
 .vscode
 .idea
 .env
 node-js-course.iml
 node_modules
 package-lock.json
+build
+.build
