@@ -1,5 +1,5 @@
-import {Router} from 'express';
-import {IController} from '../interfaces/IController';
+import {Router} from "express";
+import {IController} from "../interfaces/IController";
 
 export class MainController {
   private readonly _mainRouter: Router;
@@ -17,7 +17,7 @@ export class MainController {
     });
   }
 
-  get mainRouter(){
+  get mainRouter() {
     return this._mainRouter;
   }
 }

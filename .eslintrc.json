@@ -26,7 +26,8 @@
         ],
         "quotes": [
             "error",
-            "single"
+            "double",
+            {"allowTemplateLiterals": true}
         ],
         "semi": [
             "error",

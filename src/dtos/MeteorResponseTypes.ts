@@ -3,21 +3,21 @@ export type MeteorResponse = {
   visible?: {
     meteors: number
   },
-  meteors?: {}[],
+  meteors?: Meteor[],
   nearObjectResponse?: NearEarthObjectsResponse
 }
 
 export type Meteor = {
   id: string;
   name: string;
-  estimated_diameter: {
+  estimated_diameter?: {
     meters: {
       estimated_diameter_min: number;
       estimated_diameter_max: number;
     };
   };
   is_potentially_hazardous_asteroid: boolean;
-  close_approach_data: {
+  close_approach_data?: {
     relative_velocity: {
       kilometers_per_second: number;
     };
@@ -30,10 +30,7 @@ export type NearEarthObjectsResponse = {
 
 export type HazardousMeteor = {
   amount: number,
-  meteors: {
-    id: string,
-    name: string,
-    isPotentiallyHazard: boolean
-  }[]
+  meteors: Meteor[],
+  isPotentiallyHazard?: boolean
 }
 

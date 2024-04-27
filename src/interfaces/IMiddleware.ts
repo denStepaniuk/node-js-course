@@ -1,6 +1,5 @@
-import {Request, Response, NextFunction} from 'express'
-import Exception from '../utils/exceptions/Exception';
+import {Request, Response, NextFunction} from "express";
 
 export class IMiddleware {
-  cast: ((req: Request, res: Response, next: NextFunction) => void)
+  cast: ((req: Request, res: Response, next: NextFunction) => void);
 }

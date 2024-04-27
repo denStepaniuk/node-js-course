@@ -1,5 +1,5 @@
-import {Router} from 'express';
-import {MainController} from '../controllers/MainController';
+import {Router} from "express";
+import {MainController} from "../controllers/MainController";
 
 /**
  * @deprecated

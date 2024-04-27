@@ -1,24 +1,24 @@
 import {
-  HazardousMeteor,
+  HazardousMeteor, Meteor,
   MeteorResponse,
   NearEarthObjectsResponse,
 } from "../dtos/MeteorResponseTypes";
 
 export class NasaResponseUtils {
   retrievePotentiallyDangerousMeteors(response: any): HazardousMeteor {
-    let body = this.transformMeteorResponse(response);
-    let responseBody: HazardousMeteor = {
+    const body = this.transformMeteorResponse(response);
+    const responseBody: HazardousMeteor = {
       amount: 0,
       meteors: [],
     };
 
     for (const key in body) {
-      body[key].forEach((arr) => {
+      body[key].forEach((arr: Meteor) => {
         if (arr.is_potentially_hazardous_asteroid) {
           responseBody.meteors.push({
             id: arr.id,
             name: arr.name,
-            isPotentiallyHazard: arr.is_potentially_hazardous_asteroid,
+            is_potentially_hazardous_asteroid: arr.is_potentially_hazardous_asteroid
           });
         }
       });
@@ -44,11 +44,11 @@ export class NasaResponseUtils {
               meteor.estimated_diameter.meters.estimated_diameter_max,
             ),
             is_potentially_hazardous_asteroid:
-              meteor.is_potentially_hazardous_asteroid,
+            meteor.is_potentially_hazardous_asteroid,
             close_approach_data: meteor.close_approach_data,
             relative_velocity:
-              meteor.close_approach_data[0].relative_velocity
-                .kilometers_per_second,
+            meteor.close_approach_data[0].relative_velocity
+              .kilometers_per_second,
           };
         });
       }

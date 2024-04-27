@@ -1,7 +1,7 @@
-import {NextFunction, Request, Response} from 'express';
-import {MainController} from './MainController';
-import {ResponseRenderService} from '../services/ResponseRenderService';
-import {MeteorDataService} from '../services/MeteorDataService';
+import {NextFunction, Request, Response} from "express";
+import {MainController} from "./MainController";
+import {ResponseRenderService} from "../services/ResponseRenderService";
+import {MeteorDataService} from "../services/MeteorDataService";
 
 export class MeteorsController extends MainController {
   private readonly renderService: ResponseRenderService;
@@ -14,18 +14,18 @@ export class MeteorsController extends MainController {
 
     this.bindRoutes([
       {
-        path: '/get-meteors-data',
-        method: 'get',
+        path: "/get-meteors-data",
+        method: "get",
         func: this.getMeteorsData
       },
       {
-        path: '/',
-        method: 'get',
+        path: "/",
+        method: "get",
         func: this.renderHomePage,
       },
       {
-        path: '/get-dangerous-meteors',
-        method: 'get',
+        path: "/get-dangerous-meteors",
+        method: "get",
         func: this.renderHazardousMeteorsPage
       }
     ]);
@@ -49,7 +49,7 @@ export class MeteorsController extends MainController {
 
   getMeteorsData(req: Request, res: Response, next: NextFunction) {
     try {
-      this.dataService.getMeteorsJsonData(req, res, next)
+      this.dataService.getMeteorsJsonData(req, res, next);
     } catch (error) {
       next(error);
     }

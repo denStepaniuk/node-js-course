@@ -1,7 +1,7 @@
-import axios from 'axios';
-import {NASA_URL, ROVER_PATH} from '../router/router.utills';
-import {nasa_api_key} from '../config/config';
-import {PictureProcessorService} from './PictureProcessorService';
+import axios from "axios";
+import {NASA_URL, ROVER_PATH} from "../router/router.utills";
+import {nasa_api_key} from "../config/config";
+import {PictureProcessorService} from "./PictureProcessorService";
 
 export class PicturesProxyService {
   private readonly pictureProcessor: PictureProcessorService;
@@ -20,5 +20,5 @@ export class PicturesProxyService {
     }).then((response) => {
       return this.pictureProcessor.getLinksOnPhotos(response.data);
     });
-  };
+  }
 }

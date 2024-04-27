@@ -28,7 +28,7 @@ export class Application {
   useRouter() {
     this.app.use("/", this.picturesController.mainRouter);
     this.app.use("/", this.meteorsController.mainRouter);
-    this.app.use("/", this.jsonPlaceholderController.mainRouter)
+    this.app.use("/", this.jsonPlaceholderController.mainRouter);
   }
 
   useNunjucks() {
@@ -40,8 +40,8 @@ export class Application {
 
   useLogger() {
     this.app.use((req: Request, res: Response, next: NextFunction) => {
-      logger.cast(req, res, next)
-    })
+      logger.cast(req, res, next);
+    });
   }
 
   useSentryLogger() {
@@ -60,7 +60,7 @@ export class Application {
 
   init() {
     // this.useSentryLogger()
-    this.useLogger()
+    this.useLogger();
     this.useRouter();
     this.useNunjucks();
     this.app.use(express.json());

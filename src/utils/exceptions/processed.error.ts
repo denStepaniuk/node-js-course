@@ -1,6 +1,6 @@
-import {randomUUID, UUID} from 'node:crypto';
-import {InvalidResponseBodyException} from './InvalidResponseBodyException';
-import Exception from './Exception';
+import {randomUUID, UUID} from "node:crypto";
+import {InvalidResponseBodyException} from "./InvalidResponseBodyException";
+import Exception from "./Exception";
 
 export type ProcessedError = {
   id: UUID,
@@ -13,15 +13,15 @@ export function errorProcessor(err: InvalidResponseBodyException | Exception): P
   let processedError: ProcessedError;
 
   err instanceof InvalidResponseBodyException
-      ? processedError = {
-        id: randomUUID(),
-        message: err.message,
-        info: err.validationErrMsg
-      }
-      : processedError = {
-        id: randomUUID(),
-        message: err.message
-      }
+    ? processedError = {
+      id: randomUUID(),
+      message: err.message,
+      info: err.validationErrMsg
+    }
+    : processedError = {
+      id: randomUUID(),
+      message: err.message
+    };
 
   return processedError;
 }
