@@ -59,6 +59,7 @@ export class Application {
   }
 
   init() {
+    // this.useSentryLogger()
     this.useLogger()
     this.useRouter();
     this.useNunjucks();
