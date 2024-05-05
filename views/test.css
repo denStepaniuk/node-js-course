@@ -1,0 +1,42 @@
+html {
+  background-color: slateblue;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+#myTextarea {
+  padding: 0px;
+  margin: 0px;
+  width: 150px;
+  cursor: pointer;
+}
+
+#selectPlaceholder {
+  color: rgb(138, 136, 136);
+  pointer-events: none;
+  width: 154px;
+}
+
+#dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #ebe8ed;
+  min-width: 100px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+#dropdownContent option{
+  cursor: pointer;
+}
+
+#dropdownContent option:hover {
+  background-color: #afdaf0;
+}
+
+#corp-id {
+  display: none;
+}

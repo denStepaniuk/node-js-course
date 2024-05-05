@@ -60,7 +60,7 @@ export class Application {
 
   init() {
     // this.useSentryLogger()
-    this.useLogger();
+    // this.useLogger();
     this.useRouter();
     this.useNunjucks();
     this.app.use(express.json());
