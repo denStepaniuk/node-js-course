@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "npm run build && node ./build/main.js",
-    "test": "npm run build && jest"
+    "test": "npm run build && jest",
+    "ts": "ts-node ./main.ts"
   },
   "author": "d.stsepaniuk",
   "license": "ISC",

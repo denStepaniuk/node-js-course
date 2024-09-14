@@ -1,7 +1,8 @@
-import {NextFunction, Request, Response} from "express";
-import {MainController} from "./MainController";
-import {ResponseRenderService} from "../services/ResponseRenderService";
-import {MeteorDataService} from "../services/MeteorDataService";
+import { NextFunction, Request, Response } from "express";
+import { MainController } from "./MainController";
+import { ResponseRenderService } from "../services/ResponseRenderService";
+import { MeteorDataService } from "../services/MeteorDataService";
+import { log } from "node:console";
 
 export class MeteorsController extends MainController {
   private readonly renderService: ResponseRenderService;
@@ -16,7 +17,7 @@ export class MeteorsController extends MainController {
       {
         path: "/get-meteors-data",
         method: "get",
-        func: this.getMeteorsData
+        func: this.getMeteorsData,
       },
       {
         path: "/",
@@ -26,8 +27,8 @@ export class MeteorsController extends MainController {
       {
         path: "/get-dangerous-meteors",
         method: "get",
-        func: this.renderHazardousMeteorsPage
-      }
+        func: this.renderHazardousMeteorsPage,
+      },
     ]);
   }
 
@@ -39,6 +40,7 @@ export class MeteorsController extends MainController {
     }
   }
 
+  //deprecated due to availability lost
   renderHazardousMeteorsPage(req: Request, res: Response, next: NextFunction) {
     try {
       this.renderService.renderHazardousPage(req, res, next);
@@ -47,6 +49,7 @@ export class MeteorsController extends MainController {
     }
   }
 
+  //deprecated due to availability lost
   getMeteorsData(req: Request, res: Response, next: NextFunction) {
     try {
       this.dataService.getMeteorsJsonData(req, res, next);

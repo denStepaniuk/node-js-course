@@ -36,6 +36,7 @@ export class Application {
       autoescape: true,
       express: this.app,
     });
+    this.app.set("view engine", "html");
   }
 
   useLogger() {
@@ -49,23 +50,33 @@ export class Application {
     sentryInitiator(this.picturesController.mainRouter);
     this.app.use(sentryInitiator);
   }
-
   useExceptionHandler() {
     const exceptionFilter = new ExceptionFilter();
     this.app.use(exceptionFilter.catch.bind(exceptionFilter));
     this.app.use("*", (req: Request, res: Response) => {
-      res.render(path.resolve(__dirname, "..", "..", "views", "error-pages", "page-not-found.html"));
+      res.render(
+        path.resolve(
+          __dirname,
+          "..",
+          "..",
+          "views",
+          "error-pages",
+          "page-not-found.html",
+        ),
+      );
     });
   }
 
   init() {
     // this.useSentryLogger()
     // this.useLogger();
+    const pathToStatic = path.resolve(__dirname, "..", "public");
+    console.log("Init method: ", pathToStatic);
     this.useRouter();
     this.useNunjucks();
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
-    this.app.use(express.static(path.resolve(__dirname, "..", "..", "public")));
+    this.app.use(express.static(pathToStatic));
     this.useExceptionHandler();
     this.app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
       if (err instanceof Exception) {

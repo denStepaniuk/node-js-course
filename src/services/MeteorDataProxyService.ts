@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, {HttpStatusCode} from "axios";
 import { nasa_api_key } from "../config/config";
 import { METEORS_PATH, NASA_URL } from "../router/router.utills";
 import { DateUtils } from "../utils/DateUtils";

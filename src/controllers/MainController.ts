@@ -19,11 +19,6 @@ export class MainController {
   }
 
   get mainRouter() {
-    this._mainRouter.use((req, res, next) => {
-      // middleware here used on lvl of rourer
-      logger.cast(req, res, next);
-
-    });
     return this._mainRouter;
   }
 }
