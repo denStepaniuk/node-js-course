@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/node';
-import {sentry_dsn} from '../config/config';
-import {nodeProfilingIntegration} from '@sentry/profiling-node';
-import {Router} from 'express';
+import { sentry_dsn } from '../config/config';
+import { nodeProfilingIntegration } from '@sentry/profiling-node';
+import { Router } from 'express';
 
 export const sentryInitiator = (router: Router) => {
   Sentry.init({

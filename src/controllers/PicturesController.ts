@@ -1,6 +1,6 @@
 import {MainController} from "./MainController";
 import {NextFunction, Request, Response} from "express";
-import {ResponseRenderService} from "../services/ResponseRenderService";
+import {ResponseRenderService} from "../services/archived/ResponseRenderService";
 
 export class PicturesController extends MainController {
   private readonly renderService: ResponseRenderService;

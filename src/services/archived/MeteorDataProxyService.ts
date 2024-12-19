@@ -1,14 +1,16 @@
-import axios, {HttpStatusCode} from "axios";
-import { nasa_api_key } from "../config/config";
-import { METEORS_PATH, NASA_URL } from "../router/router.utills";
-import { DateUtils } from "../utils/DateUtils";
-import { NasaResponseUtils } from "../utils/NasaResponseUtils";
+import axios, { HttpStatusCode } from "axios";
+import { nasa_api_key } from "../../config/config";
+import { METEORS_PATH, NASA_URL } from "../../router/router.utills";
+import { DateUtils } from "../../utils/DateUtils";
+import { NasaResponseUtils } from "../../utils/NasaResponseUtils";
 import {
   HazardousMeteor,
   MeteorResponse,
   NearEarthObjectsResponse,
-} from "../dtos/MeteorResponseTypes";
-
+} from "../../dtos/MeteorResponseTypes";
+/**
+ * @deprecated
+ */
 export class MeteorDataProxyService {
   private readonly responseUtils: NasaResponseUtils;
   private readonly dateUtils: DateUtils;

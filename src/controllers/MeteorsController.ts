@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { MainController } from "./MainController";
-import { ResponseRenderService } from "../services/ResponseRenderService";
-import { MeteorDataService } from "../services/MeteorDataService";
+import { ResponseRenderService } from "../services/archived/ResponseRenderService";
+import { MeteorDataService } from "../services/archived/MeteorDataService";
 import { log } from "node:console";
 
 export class MeteorsController extends MainController {

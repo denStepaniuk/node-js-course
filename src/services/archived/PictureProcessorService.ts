@@ -1,5 +1,7 @@
 export class PictureProcessorService {
-
+  /**
+   * @deprecated
+   */
   getLinksOnPhotos(responseData: any) {
     let counter = 0;
     const toReturn = [];

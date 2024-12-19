@@ -2,9 +2,12 @@ import { NextFunction, Request, Response } from "express";
 import { MeteorDataProxyService } from "./MeteorDataProxyService";
 import {
   meteorResponseDataValidator, nearEarthObjectValidator
-} from "../utils/validators/validators";
-import { InvalidResponseBodyException } from "../utils/exceptions/InvalidResponseBodyException";
+} from "../../utils/validators/validators";
+import { InvalidResponseBodyException } from "../../utils/exceptions/InvalidResponseBodyException";
 
+/**
+ * @deprecated
+ */
 export class MeteorDataService {
   private readonly proxyService: MeteorDataProxyService;
 

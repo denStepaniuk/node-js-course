@@ -2,9 +2,11 @@ import {NextFunction, Request, Response} from "express";
 import path from "path";
 import {MeteorDataProxyService} from "./MeteorDataProxyService";
 import {PicturesProxyService} from "./PicturesProxyService";
-import {meteorResponseDataValidator} from "../utils/validators/validators";
-import {InvalidResponseBodyException} from "../utils/exceptions/InvalidResponseBodyException";
-
+import {meteorResponseDataValidator} from "../../utils/validators/validators";
+import {InvalidResponseBodyException} from "../../utils/exceptions/InvalidResponseBodyException";
+/**
+ * @deprecated
+ */
 export class ResponseRenderService {
     private readonly meteorProxyService: MeteorDataProxyService;
     private readonly pictureProxyService: PicturesProxyService;
