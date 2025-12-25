@@ -1,6 +1,6 @@
-import {NextFunction, Request, Response} from "express";
-import {JsonPlaceholderService} from "../services/JsonPlaceholderService";
-import {MainController} from "./MainController";
+import { NextFunction, Request, Response } from "express";
+import { JsonPlaceholderService } from "../services/JsonPlaceholderService";
+import { MainController } from "./MainController";
 
 export class JsonPlaceholderController extends MainController {
   private readonly jphService: JsonPlaceholderService;

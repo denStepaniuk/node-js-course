@@ -19,7 +19,8 @@ export class PicturesController extends MainController {
 
   renderRoverPictures(req: Request, res: Response, next: NextFunction) {
     try {
-      this.renderService.renderPicturePage(req, res, next);
+      const a = this.renderService.renderPicturePage(req, res, next);
+      this.renderService.renderHazardousPage(req, res, next);
     } catch (error) {
       next(error);
     }

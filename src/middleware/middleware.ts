@@ -1,5 +1,5 @@
-import {IMiddleware} from "../interfaces/IMiddleware";
-import {Request, Response, NextFunction} from "express";
+import IMiddleware from "../interfaces/IMiddleware";
+import { Request, Response, NextFunction } from "express";
 
 // Middleware triggered for any types of requests not only for those that defined in controllers
 // even calls to favicon or static trapped

@@ -1,5 +1,5 @@
-import {Request, Response, NextFunction} from "express";
+import { Request, Response, NextFunction } from "express";
 
-export class IMiddleware {
+export default class IMiddleware {
   cast: ((req: Request, res: Response, next: NextFunction) => void);
 }

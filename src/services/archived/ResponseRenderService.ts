@@ -1,11 +1,13 @@
-import {NextFunction, Request, Response} from "express";
+import { NextFunction, Request, Response } from "express";
 import path from "path";
-import {MeteorDataProxyService} from "./MeteorDataProxyService";
-import {PicturesProxyService} from "./PicturesProxyService";
-import {meteorResponseDataValidator} from "../../utils/validators/validators";
-import {InvalidResponseBodyException} from "../../utils/exceptions/InvalidResponseBodyException";
+import { MeteorDataProxyService } from "./MeteorDataProxyService";
+import { PicturesProxyService } from "./PicturesProxyService";
+import { meteorResponseDataValidator } from "../../utils/validators/validators";
+import { InvalidResponseBodyException } from "../../utils/exceptions/InvalidResponseBodyException";
+
 /**
  * @deprecated
+ * the reason is that api key is no more valid
  */
 export class ResponseRenderService {
     private readonly meteorProxyService: MeteorDataProxyService;
@@ -40,16 +42,16 @@ export class ResponseRenderService {
                     });
                 }
             }).catch((error) => {
-            next(error);
-        });
+                next(error);
+            });
     }
 
     renderPicturePage(req: Request, res: Response, next: NextFunction) {
         this.pictureProxyService.getLinksToRoverPictures()
             .then((linksArray) => {
-                res.render(path.resolve(__dirname, "..", "..", "..", "views", "pictures.html"), {linksArray});
+                res.render(path.resolve(__dirname, "..", "..", "..", "views", "pictures.html"), { linksArray });
             }).catch((error) => {
-            next(error);
-        });
+                next(error);
+            });
     }
 }

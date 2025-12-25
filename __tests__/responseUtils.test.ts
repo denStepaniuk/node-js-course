@@ -1,6 +1,6 @@
-import {NasaResponseUtils} from "../src/utils/NasaResponseUtils";
-import {AxiosResponse} from "axios";
-import {describe, beforeAll, it, expect} from "@jest/globals";
+import { NasaResponseUtils } from "../src/utils/NasaResponseUtils";
+import { AxiosResponse } from "axios";
+import { describe, beforeAll, it, expect } from "@jest/globals";
 
 describe("ResponseUtils test case", () => {
   let responseUtils: NasaResponseUtils;
@@ -10,7 +10,7 @@ describe("ResponseUtils test case", () => {
   });
 
   it("Should transform response: ", () => {
-    let res = {
+    const res = {
       data: {
         element_count: 10
       }
