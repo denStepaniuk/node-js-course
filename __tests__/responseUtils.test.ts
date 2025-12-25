@@ -1,6 +1,6 @@
 import { NasaResponseUtils } from "../src/utils/NasaResponseUtils";
 import { AxiosResponse } from "axios";
-import { describe, beforeAll, it, expect } from "@jest/globals";
+import { describe, beforeAll, it, expect } from "vitest";
 
 describe("ResponseUtils test case", () => {
   let responseUtils: NasaResponseUtils;
