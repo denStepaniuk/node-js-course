@@ -1,5 +1,4 @@
 import { NasaResponseUtils } from "../src/utils/NasaResponseUtils";
-import { AxiosResponse } from "axios";
 import { describe, beforeAll, it, expect } from "vitest";
 
 describe("ResponseUtils test case", () => {
@@ -14,7 +13,7 @@ describe("ResponseUtils test case", () => {
       data: {
         element_count: 10
       }
-    } as AxiosResponse;
+    };
 
     const meteors = responseUtils.countVisibleMeteors(res);
 

@@ -13,18 +13,19 @@ testToLanchFomConsole("Hello World!");
 
 const fetchData = async (uri: string) => {
   let body = {};
-  fetch(uri)
-    .then((response) => {
-      if (response.status === 200) {
-        console.info(response.body);
-        body = response.body;
-        return body;
-      }
-    })
-    .catch((err) => console.error(err));
+  try {
+    const response = await fetch(uri);
+    if (response.status === 200) {
+      console.info(response.body);
+      body = response.body;
+      return body;
+    }
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-const data = await fetchData(uri);
+const data = fetchData(uri);
 
 ((a, b, c) => {
   console.log("Value of A: ", a)

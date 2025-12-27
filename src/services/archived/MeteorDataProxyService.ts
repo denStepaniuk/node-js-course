@@ -1,4 +1,3 @@
-import axios, { HttpStatusCode } from "axios";
 import { nasa_api_key } from "../../config/config";
 import { METEORS_PATH, NASA_URL } from "../../router/router.utills";
 import { DateUtils } from "../../utils/DateUtils";
@@ -23,14 +22,17 @@ export class MeteorDataProxyService {
   async getMeteorDataWithQueryParams(queryParams: QueryParams): Promise<MeteorResponse> {
     let responseBody: MeteorResponse;
 
-    return await axios
-      .get(`${NASA_URL}${METEORS_PATH}`, {
-        params: {
-          api_key: nasa_api_key,
-          start_date: queryParams.start_date,
-          end_date: queryParams.end_date,
-        },
-      })
+    return await fetch(`${NASA_URL}${METEORS_PATH}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        api_key: nasa_api_key,
+        start_date: queryParams.start_date,
+        end_date: queryParams.end_date,
+      }),
+    })
       .then((response) => {
         if (queryParams.count === "true") {
           responseBody = this.responseUtils.countVisibleMeteors(response);
@@ -68,14 +70,17 @@ export class MeteorDataProxyService {
   }
 
   async retrieveMeteorDataLastWeek(): Promise<NearEarthObjectsResponse> {
-    return await axios
-      .get(`${NASA_URL}${METEORS_PATH}`, {
-        params: {
-          start_date: this.dateUtils.getPreviousWeekDates().monday,
-          end_date: this.dateUtils.getPreviousWeekDates().friday,
-          api_key: nasa_api_key,
-        },
-      })
+    return await fetch(`${NASA_URL}${METEORS_PATH}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        start_date: this.dateUtils.getPreviousWeekDates().monday,
+        end_date: this.dateUtils.getPreviousWeekDates().friday,
+        api_key: nasa_api_key,
+      }),
+    })
       .then((response) => {
         return this.responseUtils.transformMeteorResponse(response);
       });
