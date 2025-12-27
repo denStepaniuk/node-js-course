@@ -60,8 +60,9 @@ export class Application {
     }
 
     init() {
+        // TODO: possibly I no longer need this thirdparty
         // this.useSentryLogger()
-        // this.useLogger();
+        this.useLogger();
         const pathToStatic = path.resolve(__dirname, "..", "public");
         console.log("Init method: ", pathToStatic);
         this.useRouter();

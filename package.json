@@ -1,6 +1,7 @@
 {
   "name": "node-js-course",
   "version": "1.0.0",
+  "type": "module",
   "description": "Simple Node.js training project.",
   "scripts": {
     "build": "tsc",
