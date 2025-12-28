@@ -5,11 +5,18 @@ import { Request, Response, NextFunction } from "express";
 // even calls to favicon or static trapped
 
 export const logger: IMiddleware = {
-  cast: (req: Request, res: Response, next: NextFunction): void => {
-    console.log(`HERE STARTS MIDDLEWARE: --> : `);
-    Object.keys(req.params).length !== 0 ? console.log(req.params) : undefined;
-    console.log(req.url);
-    console.log("MESSAGE FROM MIDDLEWARE \n");
-    next();
+  cast: (req: Request, res: Response, next: NextFunction) => {
+    console.info('Logger activated');
+
+    const logBody = {
+      method: req.method,
+      url: req.url,
+      headers: req.headers,
+      body: req.body,
+      params: req.params,
+      query: req.query,
+    };
+
+    console.info(logBody);
   }
 };

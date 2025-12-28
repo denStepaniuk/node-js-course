@@ -8,25 +8,26 @@ import Exception from "./utils/exceptions/Exception";
 import { errorProcessor } from "./utils/exceptions/processed.error";
 import { JsonPlaceholderController } from "./controllers/JsonPlaceholderController";
 import { logger } from "./middleware/middleware";
+import { nextTick } from "process";
 
 export class Application {
-  serverPort: number;
-  app: Express;
-  meteorsController: MeteorsController;
-  picturesController: PicturesController;
+  private readonly serverPort: number;
+  private app: Express;
+  private meteorsController: MeteorsController;
+  private picturesController: PicturesController;
   jsonPlaceholderController: JsonPlaceholderController;
 
   constructor(port: number) {
     this.app = express();
     this.serverPort = port;
-    this.meteorsController = new MeteorsController();
-    this.picturesController = new PicturesController();
+    // this.meteorsController = new MeteorsController();
+    // this.picturesController = new PicturesController();
     this.jsonPlaceholderController = new JsonPlaceholderController();
   }
 
   useRouter() {
-    this.app.use("/", this.picturesController.mainRouter);
-    this.app.use("/", this.meteorsController.mainRouter);
+    // this.app.use("/", this.picturesController.mainRouter);
+    // this.app.use("/", this.meteorsController.mainRouter);
     this.app.use("/", this.jsonPlaceholderController.mainRouter);
   }
 
@@ -55,7 +56,7 @@ export class Application {
   init() {
     // TODO: possibly I no longer need this thirdparty
     // this.useSentryLogger()
-    this.useLogger();
+    // this.useLogger();
     const pathToStatic = path.resolve(__dirname, "..", "public");
     console.log("Init method: ", pathToStatic);
     this.useRouter();
