@@ -14,21 +14,21 @@ export class MeteorsController extends MainController {
     this.dataService = new MeteorDataService();
 
     this.bindRoutes([
-      {
-        path: "/get-meteors-data",
-        method: "get",
-        func: this.getMeteorsData,
-      },
+      // {
+      //   path: "/get-meteors-data",
+      //   method: "get",
+      //   func: this.getMeteorsData,
+      // },
       {
         path: "/",
         method: "get",
         func: this.renderHomePage,
       },
-      {
-        path: "/get-dangerous-meteors",
-        method: "get",
-        func: this.renderHazardousMeteorsPage,
-      },
+      // {
+      //   path: "/get-dangerous-meteors",
+      //   method: "get",
+      //   func: this.renderHazardousMeteorsPage,
+      // },
     ]);
   }
 

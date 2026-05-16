@@ -3,7 +3,7 @@ const valueHandler = (event) => {
   if (event > 0) {
     let paragraph = document.createElement("p");
     paragraph.textContent = `Hello World! Value is ${event}`;
-    paragraph.style.fontSize = 18;
+    paragraph.style.fontSize = '18';
 
     const textArea = document.getElementById("myTextarea");
     textArea.insertAdjacentElement("afterend", paragraph);

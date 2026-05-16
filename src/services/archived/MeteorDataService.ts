@@ -15,7 +15,12 @@ export class MeteorDataService {
     this.proxyService = new MeteorDataProxyService();
   }
 
+  private get someExtra(): string {
+    return "Hello fellow test"
+  }
+
   getMeteorsJsonData(req: Request, res: Response, next: NextFunction) {
+    const s = this.someExtra
     if (Object.keys(req.query).length !== 0) {
       this.proxyService.getMeteorDataWithQueryParams(req.query)
         .then((responseBody) => {
@@ -23,19 +28,6 @@ export class MeteorDataService {
 
           if (validationResult.error) {
             throw new InvalidResponseBodyException(500, "Invalid Response Body Validation", validationResult.error.message);
-          }
-
-          res.status(200).send(responseBody);
-        }).catch((error) => {
-          next(error);
-        });
-    } else {
-      this.proxyService.retrieveMeteorDataLastWeek()
-        .then((responseBody) => {
-          const invalidResponseBody = nearEarthObjectValidator(responseBody);
-
-          if (invalidResponseBody.error) {
-            throw new InvalidResponseBodyException(500, "Invalid Response Body Validation", invalidResponseBody.error.message);
           }
 
           res.status(200).send(responseBody);

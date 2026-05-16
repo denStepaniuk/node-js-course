@@ -18,5 +18,7 @@ export const logger: IMiddleware = {
     };
 
     console.info(logBody);
+
+    next();
   }
 };

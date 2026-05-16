@@ -61,7 +61,7 @@ export class MeteorDataProxyService {
           queryParams.were_dangerous_meteors === "true" &&
           !(queryParams.start_date && queryParams.end_date)
         ) {
-          responseBody =
+          responseBody
             this.responseUtils.retrievePotentiallyDangerousMeteors(response);
         }
 

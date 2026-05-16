@@ -8,30 +8,29 @@ import Exception from "./utils/exceptions/Exception";
 import { errorProcessor } from "./utils/exceptions/processed.error";
 import { JsonPlaceholderController } from "./controllers/JsonPlaceholderController";
 import { logger } from "./middleware/middleware";
-import { nextTick } from "process";
 
 export class Application {
   private readonly serverPort: number;
   private app: Express;
   private meteorsController: MeteorsController;
-  private picturesController: PicturesController;
+  private pc: PicturesController;
+  // private picturesController: PicturesController;
   jsonPlaceholderController: JsonPlaceholderController;
 
   constructor(port: number) {
     this.app = express();
     this.serverPort = port;
-    // this.meteorsController = new MeteorsController();
-    // this.picturesController = new PicturesController();
+    this.meteorsController = new MeteorsController();
     this.jsonPlaceholderController = new JsonPlaceholderController();
   }
 
-  useRouter() {
+  private useRouter() {
     // this.app.use("/", this.picturesController.mainRouter);
-    // this.app.use("/", this.meteorsController.mainRouter);
+    this.app.use("/", this.meteorsController.mainRouter);
     this.app.use("/", this.jsonPlaceholderController.mainRouter);
   }
 
-  useNunjucks() {
+  private useNunjucks() {
     nunjucks.configure("views", {
       autoescape: true,
       express: this.app,
@@ -39,24 +38,28 @@ export class Application {
     this.app.set("view engine", "html"); //TODO: rewrite on njk
   }
 
-  useLogger() {
+  private useLogger() {
     this.app.use((req: Request, res: Response, next: NextFunction) => {
       logger.cast(req, res, next);
     });
   }
 
-  useExceptionHandler() {
+  private useExceptionHandler() {
     const exceptionFilter = new ExceptionFilter();
     this.app.use(exceptionFilter.catch.bind(exceptionFilter));
     this.app.use("*", (req: Request, res: Response) => {
-      res.render(path.resolve(__dirname, "..", "views", "error-pages", "page-not-found.html"));
+      // Making ugly as I need to test error handling based on header
+      if (req.headers["content-type"] === "application/json") { res.status(404).send('Page not found') }
+      else {
+        res.render(path.resolve(__dirname, "..", "views", "error-pages", "page-not-found.html"));
+      };
     });
   }
 
   init() {
     // TODO: possibly I no longer need this thirdparty
     // this.useSentryLogger()
-    // this.useLogger();
+    this.useLogger();
     const pathToStatic = path.resolve(__dirname, "..", "public");
     console.log("Init method: ", pathToStatic);
     this.useRouter();
